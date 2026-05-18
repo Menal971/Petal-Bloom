@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/post.dart';
@@ -28,8 +30,7 @@ class DetailScreen extends StatelessWidget {
                 tooltip: 'Edit',
                 onPressed: () => Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (_) => AddEditScreen(post: post)),
+                  MaterialPageRoute(builder: (_) => AddEditScreen(post: post)),
                 ),
               ),
             ],
@@ -145,8 +146,7 @@ class DetailScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppTheme.rosePetal,
                         foregroundColor: Colors.white,
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 16),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16)),
                         elevation: 0,

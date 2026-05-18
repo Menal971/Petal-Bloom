@@ -1,30 +1,33 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:petal_notes_flutter/main.dart';
+import 'package:petal_notes/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('PetalApp renders HomeScreen smoke test',
+      (WidgetTester tester) async {
+    // Build the app
+    await tester.pumpWidget(const PetalApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Allow async operations (like initial API fetch) to settle
+    await tester.pump(const Duration(seconds: 1));
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Verify the app title or key UI element is present
+    expect(find.text('Petal Notes'), findsOneWidget);
+  });
+
+  testWidgets('HomeScreen shows loading or content',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(const PetalApp());
+
+    // Right after build, a loading indicator may be shown
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Either a CircularProgressIndicator or list content should be present
+    final hasLoader =
+        find.byType(CircularProgressIndicator).evaluate().isNotEmpty;
+    final hasContent = find.byType(ListView).evaluate().isNotEmpty;
+
+    expect(hasLoader || hasContent, true);
   });
 }

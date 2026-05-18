@@ -33,8 +33,7 @@ class _NoteCardState extends State<NoteCard>
     super.initState();
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 100));
-    _scaleAnim =
-        Tween<double>(begin: 1.0, end: 0.97).animate(_controller);
+    _scaleAnim = Tween<double>(begin: 1.0, end: 0.97).animate(_controller);
   }
 
   @override
@@ -70,13 +69,13 @@ class _NoteCardState extends State<NoteCard>
       child: ScaleTransition(
         scale: _scaleAnim,
         child: Container(
-          margin:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
+                // ignore: deprecated_member_use
                 color: AppTheme.rosePetal.withOpacity(0.12),
                 blurRadius: 16,
                 offset: const Offset(0, 6),
@@ -96,8 +95,7 @@ class _NoteCardState extends State<NoteCard>
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(_icon,
-                            color: AppTheme.rosePetal, size: 22),
+                        Icon(_icon, color: AppTheme.rosePetal, size: 22),
                         const SizedBox(height: 6),
                         Text(
                           '#${widget.post.id.abs()}',
@@ -148,15 +146,13 @@ class _NoteCardState extends State<NoteCard>
                                     horizontal: 8, vertical: 3),
                                 decoration: BoxDecoration(
                                   color: AppTheme.blushMid,
-                                  borderRadius:
-                                      BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     const Icon(Icons.person_outline,
-                                        size: 10,
-                                        color: AppTheme.rosePetal),
+                                        size: 10, color: AppTheme.rosePetal),
                                     const SizedBox(width: 4),
                                     Text(
                                       'User ${widget.post.userId}',

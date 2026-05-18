@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -63,12 +65,9 @@ class _AddEditScreenState extends State<AddEditScreen> {
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(success
-            ? (_isEditing
-                ? '🌸 Note updated!'
-                : '🌸 Note created!')
+            ? (_isEditing ? '🌸 Note updated!' : '🌸 Note created!')
             : 'Something went wrong. Try again.'),
-        backgroundColor:
-            success ? AppTheme.rosePetal : const Color(0xFFD32F2F),
+        backgroundColor: success ? AppTheme.rosePetal : const Color(0xFFD32F2F),
       ));
       if (success) Navigator.pop(context);
     }
@@ -142,24 +141,24 @@ class _AddEditScreenState extends State<AddEditScreen> {
               ),
               const SizedBox(height: 24),
 
-              _FieldLabel(label: 'Title'),
+              const _FieldLabel(label: 'Title'),
               const SizedBox(height: 8),
               TextFormField(
                 controller: _titleCtrl,
                 textCapitalization: TextCapitalization.sentences,
-                style: GoogleFonts.dmSans(
-                    color: AppTheme.inkDark, fontSize: 15),
+                style:
+                    GoogleFonts.dmSans(color: AppTheme.inkDark, fontSize: 15),
                 decoration: const InputDecoration(
                   hintText: 'Give your note a title…',
-                  prefixIcon:
-                      Icon(Icons.title, color: AppTheme.rosePetal),
+                  prefixIcon: Icon(Icons.title, color: AppTheme.rosePetal),
                 ),
-                validator: (v) =>
-                    (v == null || v.trim().isEmpty) ? 'Title is required' : null,
+                validator: (v) => (v == null || v.trim().isEmpty)
+                    ? 'Title is required'
+                    : null,
               ),
               const SizedBox(height: 20),
 
-              _FieldLabel(label: 'Content'),
+              const _FieldLabel(label: 'Content'),
               const SizedBox(height: 8),
               TextFormField(
                 controller: _bodyCtrl,
@@ -175,25 +174,28 @@ class _AddEditScreenState extends State<AddEditScreen> {
                     child: Icon(Icons.notes, color: AppTheme.rosePetal),
                   ),
                 ),
-                validator: (v) =>
-                    (v == null || v.trim().isEmpty) ? 'Content is required' : null,
+                validator: (v) => (v == null || v.trim().isEmpty)
+                    ? 'Content is required'
+                    : null,
               ),
               const SizedBox(height: 20),
 
-              _FieldLabel(label: 'User ID'),
+              const _FieldLabel(label: 'User ID'),
               const SizedBox(height: 8),
               TextFormField(
                 controller: _userIdCtrl,
                 keyboardType: TextInputType.number,
-                style: GoogleFonts.dmSans(
-                    color: AppTheme.inkDark, fontSize: 15),
+                style:
+                    GoogleFonts.dmSans(color: AppTheme.inkDark, fontSize: 15),
                 decoration: const InputDecoration(
                   hintText: 'e.g. 1',
                   prefixIcon:
                       Icon(Icons.person_outline, color: AppTheme.rosePetal),
                 ),
                 validator: (v) {
-                  if (v == null || v.trim().isEmpty) return 'User ID is required';
+                  if (v == null || v.trim().isEmpty) {
+                    return 'User ID is required';
+                  }
                   if (int.tryParse(v.trim()) == null) return 'Must be a number';
                   return null;
                 },
@@ -223,8 +225,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                         : Text(
                             _isEditing ? 'Save Changes' : 'Create Note',
                             style: GoogleFonts.dmSans(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700),
+                                fontSize: 16, fontWeight: FontWeight.w700),
                           ),
                   ),
                 ),

@@ -39,7 +39,7 @@ class AppTheme {
         surface: blushLight,
         onSurface: inkDark,
         onSurfaceVariant: inkMid,
-        error: Color(0xFFD32F2F),
+        error: const Color(0xFFD32F2F),
       ),
     );
 
