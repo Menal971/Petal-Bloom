@@ -74,7 +74,7 @@ flutter run
 | ![Add Screen](screenshots/addnote.png) | ![Edit Screen](screenshots/edit.png) |
 
 
-| Inside Edit | | Note Deleted|
+| Inside Edit | Note Deleted|
 |-------------|--------------|--------------|
 | ![Inside Edit](screenshots/inside-edit.png)  | ![Note Deleted](screenshots/notedeleted.png) |
 
