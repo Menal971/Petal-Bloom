@@ -75,7 +75,7 @@ flutter run
 
 
 | Inside Edit | Note Deleted|
-|-------------|--------------|--------------|
+|-------------|--------------|
 | ![Inside Edit](screenshots/inside-edit.png)  | ![Note Deleted](screenshots/notedeleted.png) |
 
 ---
